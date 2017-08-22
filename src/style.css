@@ -1,0 +1,65 @@
+html {
+    overflow: hidden
+}
+
+.centerit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.flex-collumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.btn-aj,
+.btn-simple {
+    font-size: 3vh;
+}
+
+.btn-simple {
+    width: 90%;
+    min-height: 30%;
+}
+
+.fillme {
+    height: 100%;
+    width: 100%;
+}
+
+.triple>:nth-child(1n) {
+    height: 25%
+}
+
+.btn-aj {
+    width: 90%;
+    height: 80%
+}
+
+.float-bot-btn {
+    position: fixed;
+    bottom: 5px;
+    right: 5px
+}
+
+.mainlogo {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.next {
+    opacity: .5;
+}
+
+.next input,
+.actual input {
+    text-align: center
+}
+
+.actual {
+    opacity: .9;
+}

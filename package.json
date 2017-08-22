@@ -1,0 +1,62 @@
+{
+    "name": "elec-vue",
+    "productName": "elec-vue",
+    "version": "1.0.0",
+    "description": "My Electron application description",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "lint": "echo \"No linting configured\""
+    },
+    "keywords": [],
+    "author": "esteban",
+    "license": "MIT",
+    "config": {
+        "forge": {
+            "make_targets": {
+                "win32": [
+                    "squirrel"
+                ],
+                "darwin": [
+                    "zip"
+                ],
+                "linux": [
+                    "deb",
+                    "rpm"
+                ]
+            },
+            "electronPackagerConfig": {},
+            "electronWinstallerConfig": {
+                "name": "elec_vue"
+            },
+            "electronInstallerDebian": {},
+            "electronInstallerRedhat": {},
+            "github_repository": {
+                "owner": "",
+                "name": ""
+            },
+            "windowsStoreConfig": {
+                "packageName": "",
+                "name": "elecvue"
+            }
+        }
+    },
+    "dependencies": {
+        "electron-compile": "^6.4.1",
+        "electron-devtools-installer": "^2.0.1",
+        "node-gyp": "^3.6.2",
+        "node-mplayer": "0.0.6",
+        "vue": "^2.1.7",
+        "vuetify": "^0.14.7",
+        "vuex": "^2.3.1",
+        "web-audio-player": "^1.3.2"
+    },
+    "devDependencies": {
+        "babel-plugin-transform-async-to-generator": "^6.24.1",
+        "babel-preset-env": "^1.6.0",
+        "babel-preset-react": "^6.24.1",
+        "electron-prebuilt-compile": "1.6.11"
+    }
+}
