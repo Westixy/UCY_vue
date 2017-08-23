@@ -46,7 +46,7 @@
           <v-btn v-on:click.left="playTimeout()" v-on:contextmenu="selectFile('timeOut')" class="btn-simple purple darken-2" primary>
             <v-icon v-if="paths.timeOut===null">do_not_disturb_on</v-icon> Time out
             <v-btn fab :dark="isDark">
-              {{timeout.time}}
+              {{timeout.time-1}}
             </v-btn>
           </v-btn>
         </div>
@@ -200,7 +200,7 @@ export default {
         restartAfterStop: false
       },
       timeout:{
-        time:30,
+        time:31,
         handler:null
       },
       volume:100,
@@ -233,7 +233,7 @@ export default {
           if(this.timeout.handler!==null){
             clearInterval(this.timeout.handler)
             this.timeout.handler=null
-            this.timeout.time=30 
+            this.timeout.time=31
           }
         },
         setOnEnd: (cb) => {
@@ -379,7 +379,7 @@ export default {
         if(this.timeout.time===0){
           this.music.stop()
           this.timeout.handler=null
-          this.timeout.time=30
+          this.timeout.time=31
         } 
         console.log(this.timeout.time)
       },1000)
@@ -411,6 +411,7 @@ export default {
     },
     playMult(what, force = false) {
       const mult = this.mult[what]
+      const playing = this.music.playing
       if (mult === undefined) {
         this.showToast('Multiple does not exist : ' + what)
       } else {
@@ -434,7 +435,8 @@ export default {
         }
         this.multSetTracks(mult)
         if (mult.actual === null) return this.music.stop()
-        this.playSound(undefined, { onEnd: () => this.nextSound(), defpath: mult.actual, restart: this.mult.restartAfterStop })
+        if (this.$refs.audio.src === encodeSrc(mult.actual) && playing === true) this.nextSound(mult) 
+        this.playSound(undefined, { onEnd: () => this.nextSound(mult), defpath: mult.actual, restart: this.mult.restartAfterStop })
       }
     },
     prevSound(mult) {
@@ -445,11 +447,12 @@ export default {
       this.music.play()
     },
     nextSound(mult) {
+      const playing = this.music.playing
       mult.selected = (mult.selected < mult.sounds.length - 1) ? mult.selected + 1 : 0
       this.multSetTracks(mult)
       if (mult.actual === null) return this.music.stop()
       this.music.switch(mult.actual)
-      this.music.play()
+      if(playing===true) this.music.play()
     },
     multSetTracks(mult) {
       if (mult.sounds.length === 0) {
