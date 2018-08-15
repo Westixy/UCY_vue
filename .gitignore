@@ -2,3 +2,4 @@ node_modules
 dist
 electron-*
 compileCache*
+.UCY_app_config.json

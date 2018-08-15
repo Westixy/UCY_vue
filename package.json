@@ -44,7 +44,7 @@
         }
     },
     "dependencies": {
-        "electron-compile": "^6.4.1",
+        "electron-compile": "^6.4.3",
         "electron-devtools-installer": "^2.0.1",
         "node-gyp": "^3.6.2",
         "node-mplayer": "0.0.6",
@@ -55,7 +55,7 @@
     },
     "devDependencies": {
         "babel-plugin-transform-async-to-generator": "^6.24.1",
-        "babel-preset-env": "^1.6.0",
+        "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.24.1",
         "electron-prebuilt-compile": "1.6.11"
     }
